@@ -10,5 +10,11 @@ Mock.mock("http://localhost:5173/login", "post", (options: any) => {
                 token: "tokensdsdsd",
             },
         };
+    } else {
+        return {
+            code: 401,
+            message: "账号或密码错误！",
+            data: null,
+        };
     }
 });

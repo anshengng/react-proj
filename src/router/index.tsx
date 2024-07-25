@@ -12,7 +12,7 @@ const router = createBrowserRouter([
         element: (
             <RequireAuth
                 allowed={true}
-                redirectTo="/"
+                redirectTo="/login"
             >
                 <Home />
             </RequireAuth>

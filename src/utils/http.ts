@@ -1,4 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import store from "../store";
+import { message } from "antd";
 
 const http: AxiosInstance = axios.create({
     baseURL: "http://localhost:5173",
@@ -7,6 +9,7 @@ const http: AxiosInstance = axios.create({
 
 http.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
+        config.headers["Authorization"] = "Bearer " + store.getState().userSlice.token;
         return config;
     },
     (error) => {
@@ -16,6 +19,9 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
     (response: AxiosResponse) => {
+        if (response.data.code !== 200) {
+            message.error(`${response.data.code}: ${response.data.message}`);
+        }
         return response.data;
     },
     (error) => {
