@@ -5,6 +5,7 @@ import React from "react";
 const Home = React.lazy(() => import("../pages/home/Home"));
 const Login = React.lazy(() => import("../pages/login"));
 const NotFound = React.lazy(() => import("../pages/notFound"));
+const Dashboard = React.lazy(() => import("../pages/home/dashboard"));
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,12 @@ const router = createBrowserRouter([
                 <Home />
             </RequireAuth>
         ),
+        children: [
+            {
+                path: "/dashboard",
+                element: <Dashboard />,
+            },
+        ],
     },
     {
         path: "/login",
