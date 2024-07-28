@@ -105,7 +105,7 @@ const menuList = [
             {
                 "icon": "FrownOutlined",
                 "label": "合同详情",
-                "key": "/finance/surrender",
+                "key": "/finance/contractDetail",
             },
             {
                 "icon": "FileTextOutlined",
