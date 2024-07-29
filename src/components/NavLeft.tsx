@@ -1,8 +1,10 @@
 import { Layout, Menu, MenuProps } from "antd";
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMenu, menuProps } from "../apis/users";
 import icons from "../enums/iconList";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setMenu } from "../store/user";
 const { Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -16,13 +18,14 @@ const mapMenuItems = (items: menuProps[]): any => {
 };
 const NavLeft = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false); //侧边栏伸缩
-    const [menu, setMenu] = useState<MenuItem[]>([]);
+    const [menuList, setMenuList] = useState<MenuItem[]>([]);
     const navigation = useNavigate();
-
+    const dispatch = useDispatch();
     const getMenuData = async () => {
         const res = await getMenu();
         const cacheData: MenuItem[] = mapMenuItems(res.data);
-        setMenu(cacheData);
+        setMenuList(cacheData);
+        dispatch(setMenu(res.data)); //redux非序列化检测，redux中尽量不存ReactNode(icon: <xxxx/>)
     };
     const menuClickHandler: MenuProps["onClick"] = (e) => {
         navigation(e.key);
@@ -41,7 +44,7 @@ const NavLeft = () => {
                 theme="dark"
                 defaultSelectedKeys={["/dashboard"]}
                 mode="inline"
-                items={menu}
+                items={menuList}
                 onClick={menuClickHandler}
             />
         </Sider>

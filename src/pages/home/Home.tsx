@@ -8,7 +8,7 @@ const { Content } = Layout;
 
 const Home = () => {
     return (
-        <div className="">
+        <div>
             <Layout style={{ height: "100vh" }}>
                 <NavLeft></NavLeft>
                 <Layout>
@@ -18,8 +18,7 @@ const Home = () => {
                         <Outlet></Outlet>
                     </Content>
                 </Layout>
-            </Layout>{" "}
-            A
+            </Layout>
         </div>
     );
 };

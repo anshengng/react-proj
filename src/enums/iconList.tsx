@@ -22,7 +22,7 @@ import {
     TeamOutlined,
 } from "@ant-design/icons";
 
-const icons: any = {
+const icons: Record<string, React.ReactNode> = {
     DashboardOutlined: <DashboardOutlined />,
     UserOutlined: <UserOutlined />,
     UnorderedListOutlined: <UnorderedListOutlined />,

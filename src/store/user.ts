@@ -5,6 +5,7 @@ const userSlice = createSlice({
     initialState: {
         username: "",
         token: localStorage.getItem("token") || null,
+        menuList: [],
     },
     reducers: {
         setToken(state, { payload }) {
@@ -18,8 +19,11 @@ const userSlice = createSlice({
         setName(state, { payload }) {
             state.username = payload;
         },
+        setMenu(state, { payload }) {
+            state.menuList = payload;
+        },
     },
 });
 
-export const { setToken, clearToken, setName } = userSlice.actions;
+export const { setToken, clearToken, setName, setMenu } = userSlice.actions;
 export default userSlice.reducer;

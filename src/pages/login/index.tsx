@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "antd/es/form/Form";
 import { login } from "../../apis/users";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../store/user";
+import { setName, setToken } from "../../store/user";
 
 interface IProps {
     //声明props类型
@@ -18,6 +18,8 @@ const Login: React.FC<IProps> = () => {
             .then((res) => {
                 login("/login", res).then((res) => {
                     dispatch(setToken(res.data.token));
+                    dispatch(setName(res.data.username))
+                    localStorage.setItem("username",res.data.username)
                 });
             })
             .catch(() => {});

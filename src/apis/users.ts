@@ -3,6 +3,7 @@ import { get, post } from "../utils/request";
 interface loginDataRes {
     //响应数据的data类型
     token: string;
+    username: string;
 }
 interface loginReq {
     //响应数据的参数data类型
@@ -12,7 +13,7 @@ interface loginReq {
 export interface menuProps {
     key: string;
     label: string;
-    icon?: any;
+    icon: string;
     children?: menuProps[];
 }
 export const login = (url: string, data: loginReq) => {
