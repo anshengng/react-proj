@@ -1,3 +1,5 @@
+import { searchType } from "../pages/users";
+import { userProps } from "../pages/users/types/columns";
 import { get, post } from "../utils/request";
 
 interface loginDataRes {
@@ -24,4 +26,17 @@ export const getUserInfo = () => {};
 
 export const getMenu = () => {
     return get<menuProps[]>("/menu");
+};
+
+interface userRef extends searchType {
+    page: number;
+    pageSize: number;
+}
+interface userRes {
+    list: userProps[];
+    total: number;
+}
+//获取租户列表
+export const getUerList = (data: userRef) => {
+    return post<userRes>("/userList", data);
 };

@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {}
+:root {
+}
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+
+/* 消除浮动 */
+.clearfix:after {
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
 }
