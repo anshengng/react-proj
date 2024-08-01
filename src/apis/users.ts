@@ -1,5 +1,4 @@
-import { searchType } from "../pages/users";
-import { userProps } from "../pages/users/types/columns";
+import { searchType, userProps } from "../pages/users/types/columns";
 import { get, post } from "../utils/request";
 
 interface loginDataRes {

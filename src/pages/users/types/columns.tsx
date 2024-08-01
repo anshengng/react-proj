@@ -1,4 +1,4 @@
-import { TableProps } from "antd";
+import { Button, TableProps } from "antd";
 
 export interface userProps {
     id: string;
@@ -12,10 +12,19 @@ export interface userProps {
     organizationCode: string;
     legalPerson: string;
 }
-export const columns: TableProps<userProps>["columns"] = [
+export interface searchType {
+    companyName: string;
+    contact: string;
+    phone: string;
+}
+
+const columns: TableProps<userProps>["columns"] = [
     {
         title: "No.",
         key: "index",
+        render(text, record, index) {
+            return index + 1;
+        },
     },
     {
         title: "客户名称",
@@ -65,6 +74,20 @@ export const columns: TableProps<userProps>["columns"] = [
     {
         title: "操作",
         key: "operate",
-        dataIndex: "operate",
+        render() {
+            return (
+                <div>
+                    <Button size="small">编辑</Button>
+                    <Button
+                        danger
+                        size="small"
+                        className="ml-4"
+                    >
+                        删除
+                    </Button>
+                </div>
+            );
+        },
     },
 ];
+export default columns;

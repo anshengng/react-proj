@@ -2,15 +2,10 @@
  * 租户列表
  */
 import { Button, Card, Col, Input, Row, Table } from "antd";
-import { columns, userProps } from "./types/columns";
+import columns, { searchType, userProps } from "./types/columns";
 import { useEffect, useState } from "react";
 import { getUerList } from "../../apis/users";
 
-export interface searchType {
-    companyName: string;
-    contact: string;
-    phone: string;
-}
 const UserList = () => {
     const [dataList, setDataList] = useState<userProps[]>([]);
     const [page, setPage] = useState<number>(1);
@@ -22,8 +17,8 @@ const UserList = () => {
     });
     const [total, setTotal] = useState<number>(); // 分页总数
     //3个搜索框改变
-    const handlerChange = (e: React.ChangeEvent) => {
-        const { name, value } = e.target as HTMLInputElement;
+    const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
         setSearchData({
             ...searchData,
             [name]: value,
@@ -37,15 +32,22 @@ const UserList = () => {
         setDataList(list);
         setTotal(total);
     };
+    const rowSelectionData = {
+        onSelect: function (...e: any) {
+            console.log(e);
+        },
+        onSelectAll(...e: any) {
+            console.log(e);
+        },
+    };
     //分页
     const pagiChangeHandler = (p: number, ps: number) => {
         setPage(p);
-        setPageSize(ps);
-        searchHandler();
+        setPageSize(ps); //异步更新
     };
     useEffect(() => {
         searchHandler();
-    }, []);
+    }, [page, pageSize]); //useState更新是异步的
     return (
         <>
             <Card>
@@ -107,6 +109,7 @@ const UserList = () => {
                 </Button>
             </Card>
             <Table
+                rowSelection={rowSelectionData}
                 dataSource={dataList}
                 columns={columns as any}
                 rowKey={(record) => record.id}

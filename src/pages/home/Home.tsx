@@ -9,7 +9,7 @@ const { Content } = Layout;
 const Home = () => {
     return (
         <div>
-            <Layout style={{ height: "100vh" }}>
+            <Layout style={{ minHeight: "100vh" }}>
                 <NavLeft></NavLeft>
                 <Layout>
                     <MyHeader></MyHeader>

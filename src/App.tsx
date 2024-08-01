@@ -25,12 +25,13 @@ function App() {
         }
     };
     useEffect(() => {
-        getMenuData();
+        getMenuData(); //app->home,/users/list刷新后->404
     }, [token]);
 
     if (IRouter) {
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            // 路由懒加载过程添加loading
+            <Suspense fallback={<div>Loading...</div>}> 
                 <RouterProvider router={IRouter}></RouterProvider>
             </Suspense>
         );
