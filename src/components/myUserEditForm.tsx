@@ -12,14 +12,15 @@ const MyUserEditForm: React.FC<IProps> = React.memo(({ title, isModalOpen, handl
     const { editFormData } = useSelector((state: any) => state.userSlice);
 
     //请求应该在父组件中处理  TODO待优化
-    const submitForm = ()=>{
-        form.validateFields().then(async (res)=>{
-            res.id = editFormData.id //如果是新增则没有id,需要调用addUserApi的接口
-            const result = await editUserApi(res)
-            console.log(result);
-        }).catch(err=>{
-        })        
-    }
+    const submitForm = () => {
+        form.validateFields()
+            .then(async (res) => {
+                res.id = editFormData.id; //如果是新增则没有id,需要调用addUserApi的接口
+                const result = await editUserApi(res);
+                console.log(result);
+            })
+            .catch((err) => {});
+    };
     useEffect(() => {
         form.resetFields();
         form.setFieldsValue(editFormData);
