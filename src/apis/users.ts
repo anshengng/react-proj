@@ -39,3 +39,13 @@ interface userRes {
 export const getUerList = (data: userRef) => {
     return post<userRes>("/userList", data);
 };
+
+export const deleteUserApi = (id: string) => {
+    return post("/deleteUser", { id });
+};
+export const editUserApi = (data:any) => {
+    return post("/editUser", data);
+};
+export const addUserApi = (data:any) => {
+    return post("/addUser", data);
+};

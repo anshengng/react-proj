@@ -390,7 +390,7 @@ Mock.mock("http://localhost:5173/userList", "post", (options: any) => {
         data: Mock.mock({
             [`list|${pageSize}`]: [
                 {
-                    id: "@string('number',6)", //随机生成一个六位数字id
+                    id: "@string('number',5)", //随机生成一个六位数字id
                     name: "@cname", //随机生成一个人名
                     "status|1": ["1", "2", "3"],
                     tel: "@phone",

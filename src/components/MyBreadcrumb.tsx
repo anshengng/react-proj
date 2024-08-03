@@ -7,10 +7,10 @@ import { useLocation } from "react-router-dom";
 const findLabel = (path: string, menuList: menuProps[]): { title: string }[] => {
     let breadcrumbData = [];
     const cache = menuList.filter((item) => item.key.split("/")[1] == path.split("/")[1])[0];
-    breadcrumbData.push({ title: cache.label });
-    if (cache.children) {
+    breadcrumbData.push({ title: cache?.label });
+    if (cache?.children) {
         const childrenCache = cache.children.filter((item) => item.key.split("/")[2] == path.split("/")[2])[0];
-        breadcrumbData.push({ title: childrenCache!.label });
+        breadcrumbData.push({ title: childrenCache?.label });
     }
     return breadcrumbData;
 };

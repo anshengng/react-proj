@@ -36,7 +36,7 @@ function App() {
             </Suspense>
         );
     } else {
-        return <div>Loading...</div>;
+        return <div>Loading1...</div>;
     }
 }
 
