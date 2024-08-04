@@ -21,7 +21,7 @@ http.interceptors.response.use(
     (response: AxiosResponse) => {
         if (response.data.code !== 200) {
             message.error(`${response.data.code}: ${response.data.message}`);
-            return Promise.reject(response.data);
+            // return Promise.reject(response.data); 会阻塞APP.tsx中基础3个路由的生成，导致无法跳转login
         }
         return response.data;
     },

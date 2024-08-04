@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouteObject, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouteObject, RouterProvider, useNavigate } from "react-router-dom";
 import { router } from "./router";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { generateRouters } from "./utils/generateRouters";
 import { getMenu } from "./apis/users";
 import { setMenu } from "./store/user";
 const Dashboard = lazy(() => import("./pages/dashboard"));
+//TODO 路由守卫，在user/list中删除token并刷新，此时无法从后端获取token，返回401，只能生成3个基础路由，无法实现跳转login
 function App() {
     const { token } = useSelector((state: any) => state.userSlice);
     const [IRouter, setIRouter] = useState<any>(null);
@@ -25,7 +26,7 @@ function App() {
         }
     };
     useEffect(() => {
-        getMenuData(); //app->home,/users/list刷新后->404
+        getMenuData(); //app -> home导致/users/list刷新后->404
     }, [token]);
 
     if (IRouter) {
