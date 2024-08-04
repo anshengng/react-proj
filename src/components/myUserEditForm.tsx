@@ -8,6 +8,8 @@ interface IProps {
     handleCancel: () => void;
 }
 const MyUserEditForm: React.FC<IProps> = React.memo(({ title, isModalOpen, handleCancel }) => {
+    // const [form] = isModalOpen?Form.useForm():[];
+    //当isModalOpen为false时才渲染，会提示Instance created by `useForm` is not connected to any Form element. Forget to pass `form` prop?
     const [form] = Form.useForm();
     const { editFormData } = useSelector((state: any) => state.userSlice);
 

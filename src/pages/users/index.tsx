@@ -16,7 +16,7 @@ const UserList = () => {
     const [total, setTotal] = useState<number>(); // 分页总数
     const [selectedRowKeys, setSelectedRowKeys] = useState([]); //选择框的值
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [title,setTitle] = useState<string>('添加企业')
+    const [title, setTitle] = useState<string>("添加企业");
     const dispatch = useDispatch();
     const [searchData, setSearchData] = useState<searchType>({
         companyName: "",
@@ -41,7 +41,10 @@ const UserList = () => {
     };
     const rowSelectionData = {
         selectedRowKeys,
+        preserveSelectedRowKeys: true, //选择其他页后保留上一页的选择,实现跨页面多选
         onChange: function (selectedRowKeys: any) {
+            console.log(selectedRowKeys);
+            
             setSelectedRowKeys(selectedRowKeys);
             // console.log(dataList.filter(item=>selectedRowKeys.includes(item.id)));
         },
@@ -74,13 +77,13 @@ const UserList = () => {
     }, []);
 
     const addUser = () => {
-        setTitle('添加企业')
+        setTitle("添加企业");
         dispatch(setFormData({}));
         setIsModalOpen(true);
     };
 
     const editUser = (record: userProps) => {
-        setTitle('编辑企业')
+        setTitle("编辑企业");
         dispatch(setFormData(record));
         setIsModalOpen(true);
     };
@@ -153,6 +156,7 @@ const UserList = () => {
         {
             title: "操作",
             key: "operate",
+            fixed: "right", //固定列
             render(value, record) {
                 return (
                     <div>
@@ -253,6 +257,8 @@ const UserList = () => {
                 </Button>
             </Card>
             <Table
+                tableLayout="fixed"
+                scroll={{ y: "800px", x: "1600px" }} //滚动
                 rowSelection={rowSelectionData}
                 dataSource={dataList}
                 columns={columns as any}

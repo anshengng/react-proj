@@ -563,7 +563,7 @@ Mock.mock("http://localhost:5173/accountList", "post", (options: any) => {
                     person: "张安定",
                     tel: "15555555555",
                     department: "企划部",
-                    menu: customizeMenuList,
+                    menu: managerMenuList,
                 },
                 {
                     id: 1005,
@@ -577,5 +577,33 @@ Mock.mock("http://localhost:5173/accountList", "post", (options: any) => {
             ],
             total: 5,
         },
+    };
+});
+//账单管理
+Mock.mock("http://localhost:5173/equipmentList", "post", (options: any) => {
+    const { page, pageSize, name, person } = JSON.parse(options.body);
+    console.log("后端账单管理接到参数", JSON.parse(options.body));
+    return {
+        code: 200,
+        message: "成功",
+        data: Mock.mock({
+            [`list|${pageSize}`]: [
+                {
+                    id: '@string("number", 6)',
+                    no: '@string("number", 6)',
+                    name: "200元/月",
+                    person: ["25800/年", "19800/年"],
+                    tel: "@string('number',11)",
+                    time: "2024-01-01",
+                    rest: "2024-01-02",
+                    "status|1": ["1", "2"],
+                    last: "2024-01-03",
+                    type: "222",
+                    from: "china",
+                },
+            ],
+            total: 54,
+        }),
+        // 生成55条数据
     };
 });

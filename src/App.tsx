@@ -31,7 +31,7 @@ function App() {
     if (IRouter) {
         return (
             // 路由懒加载过程添加loading
-            <Suspense fallback={<div>Loading...</div>}> 
+            <Suspense fallback={<div>Loading...</div>}>
                 <RouterProvider router={IRouter}></RouterProvider>
             </Suspense>
         );

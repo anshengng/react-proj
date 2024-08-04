@@ -1,5 +1,12 @@
 {
     "compilerOptions": {
+        // '/src'为查找整个项目react-proj同级的目录
+        // 'src'为查找项目根目录的src,路径自动拼接/src/,使用：(apis/**.ts)
+        // '.'或''为查找项目根目录,路径自动拼接/,使用：(src/apis/**.ts)
+        "baseUrl": "", // 设置基础目录为项目根目录
+        "paths": {
+            "/src/*": ["src/*"] // 映射以 "/src/" 开头的路径为"src/"
+        },
         "composite": true,
         "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
         "target": "ES2020",
@@ -22,7 +29,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "experimentalDecorators": true,
+        "experimentalDecorators": true
     },
-    "include": ["src", "vite-env.d.ts"]
+    "include": ["src/**/*.ts", "src", "src/**/*.tsx", "vite-env.d.ts"]
 }

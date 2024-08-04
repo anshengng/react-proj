@@ -7,7 +7,7 @@ const Room = lazy(() => import("../pages/estate/room"));
 const Car = lazy(() => import("../pages/estate/car"));
 const Repair = lazy(() => import("../pages/repair"));
 const Contract = lazy(() => import("../pages/finance/contract"));
-const Surrender = lazy(() => import("../pages/finance/contractDetail"));
+const ContractDetail = lazy(() => import("../pages/finance/contractDetail"));
 const Bill = lazy(() => import("../pages/finance/bill"));
 const Merchants = lazy(() => import("../pages/merchants"));
 const All = lazy(() => import("../pages/operation/all"));
@@ -28,7 +28,7 @@ export const routerMap: Record<string, React.ReactNode> = {
     "/estate/car": <Car />,
     "/repair": <Repair />,
     "/finance/contract": <Contract />,
-    "/finance/surrender": <Surrender />,
+    "/finance/contractDetail": <ContractDetail />,
     "/finance/bill": <Bill />,
     "/merchants": <Merchants />,
     "/operation/all": <All />,
