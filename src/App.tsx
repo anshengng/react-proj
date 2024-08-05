@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouteObject, RouterProvider, useNavigate } from "react-router-dom";
+import { createBrowserRouter, RouteObject, RouterProvider, useLocation, useNavigate } from "react-router-dom";
 import { router } from "./router";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ const Dashboard = lazy(() => import("./pages/dashboard"));
 function App() {
     const { token } = useSelector((state: any) => state.userSlice);
     const [IRouter, setIRouter] = useState<any>(null);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();    
 
     const getMenuData = async () => {
         const { data } = await getMenu();

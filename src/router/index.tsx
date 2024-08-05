@@ -38,5 +38,8 @@ export const router: RouteObject[] = [
     {
         path: "*",
         element: <NotFound />,
+        // handle: {
+        //     auth: true
+        // },
     },
 ];
