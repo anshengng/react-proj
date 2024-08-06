@@ -202,7 +202,7 @@ function Settings() {
         },
     ];
     const [accountName, setAccountName] = useState<string>("当前用户");
-    const { menuList } = useSelector((state: any) => state.authSlice);
+    const { menuList } = useSelector((state: any) => state.userSlice);
     const [checkedKeys, setCheckedKeys] = useState<React.Key[]>([]);
     const {
         dataList,

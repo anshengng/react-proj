@@ -49,3 +49,7 @@ export const editUserApi = (data:any) => {
 export const addUserApi = (data:any) => {
     return post("/addUser", data);
 };
+
+export function getAccountList(data:any){
+    return post("/accountList",data)
+}

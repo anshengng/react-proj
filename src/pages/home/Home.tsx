@@ -8,11 +8,11 @@ import { useEffect } from "react";
 const { Content } = Layout;
 
 const Home = () => {
-    const location = useLocation();
-    const match = useMatches();
-    useEffect(() => {
-        console.log(match);
-    }, []);
+    // const location = useLocation();
+    // const match = useMatches();
+    // useEffect(() => {
+    //     console.log(match);
+    // }, []);
     return (
         <div>
             <Layout style={{ minHeight: "100vh" }}>
