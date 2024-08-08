@@ -10,3 +10,4 @@ interface SearchData {
 export function getEquipmentList(data: SearchData) {
     return post<{ list: any[]; total: number }>("/equipmentList", data);
 }
+
